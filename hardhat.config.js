@@ -1,5 +1,8 @@
 require("@nomicfoundation/hardhat-toolbox");
-require('dotenv').config();
+require("@nomiclabs/hardhat-ethers");
+require("@openzeppelin/hardhat-upgrades");
+require("@nomiclabs/hardhat-etherscan");
+require('dotenv').config()
 
 /** @type import('hardhat/config').HardhatUserConfig */
 module.exports = {
@@ -7,8 +10,11 @@ module.exports = {
   defaultNetwork: "sepolia",
   networks: {
     sepolia: {
-      url: `${process.env.CHAINSTACK_ENDPOINT}`,
-      accounts: [process.env.YOUR_PRIVATE_KEY]
+      url: process.env.CHAINSTACK_ENDPOINT,
+      accounts: [process.env.PRIVATE_KEY]
     },
   },
+  etherscan: {
+    apiKey: process.env.ETHERSCAN_API_KEY,
+  }
 };
